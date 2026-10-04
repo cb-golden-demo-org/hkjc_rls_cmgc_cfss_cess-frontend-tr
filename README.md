@@ -1,6 +1,6 @@
 # Hackers Web Application
 
-A modern web interface for viewing Hacker News content, built with Vue.js and featuring dynamic feature management.
+A modern web interface for viewing Hacker News content, built with Vue.js and featuring dynamic feature management...
 
 ## Local Development
 
