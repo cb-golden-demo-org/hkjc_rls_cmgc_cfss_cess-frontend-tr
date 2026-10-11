@@ -21,7 +21,7 @@ jobs:
       - name: Checkout
         uses: cloudbees-io/checkout@v1
         with:
-          repository: cb-golden-demo-org/hackers-klee-rodemo-web
+          repository: cb-golden-demo-org/hkjc-rls-cmgc-cfss
       - uses: cloudbees-days/setup-kubeconfig
         name: Set kubeconfig
         with:
