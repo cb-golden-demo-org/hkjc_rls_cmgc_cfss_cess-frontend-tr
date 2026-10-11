@@ -26,23 +26,6 @@ jobs:
         name: Set kubeconfig
         with:
           kubeconfig: ${{ secrets.KUBECONFIG }}
-      - id: install-chart
-        name: Install helm chart
-        uses: cloudbees-io/helm-install@v1
-        with:
-          chart-location: ${{ cloudbees.workspace }}/chart
-          release-name: hackers-klee-rodemo-web
-          namespace: ${{ vars.namespace }}
-          values: |
-            image:
-              url: ${{ inputs.artifact-url }}
-            hostname: hackers-klee-rodemo-web.${{ inputs.environment }}.preview.cb-demos.io
-            config:
-              fmKey: ${{ vars.FM_TOKEN }}
-              apiUrl: https://hackers-klee-rodemo-api.${{ inputs.environment }}.preview.cb-demos.io/api
-              authUrl: https://hackers-klee-rodemo-auth.${{ inputs.environment }}.preview.cb-demos.io
-              useVPC: false
-              fmInstance: cloudbees.io
       - name: Register deployed artifact
         uses: cloudbees-io/register-deployed-artifact@v2
         with:
@@ -52,8 +35,5 @@ jobs:
         uses: cloudbees-io/publish-evidence-item@v1
         with:
           content: |-
-            ## Deployed environment
-            [Dev frontend](https://hackers-klee-rodemo-web.${{ inputs.environment }}.preview.cb-demos.io/)
-
             Running ${{ inputs.artifact-url }}
           format: MARKDOWN
